@@ -4,9 +4,9 @@ section .text
     global _start                 ; punto de entrada
 
 _start:
-	mov ebx, 3	
+    mov ebx, 3	
     mov esi, 4			  
-    mov byte[msg + ebx + esi*4], '%'        
+    mov byte[msg + ebx + esi], '%'        
     mov edx, msg                  
     call puts                     
 
