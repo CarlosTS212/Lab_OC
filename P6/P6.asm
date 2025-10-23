@@ -68,7 +68,6 @@ _start:                     ;tell linker entry point
     div cx             
 
     ; mostrar cociente
-    mov eax, eax       
     call pHex_w
     mov al, 10
     call putchar
