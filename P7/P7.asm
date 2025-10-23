@@ -121,7 +121,10 @@ _start:                     ;tell linker entry point
     call putchar
 
     ; Punto k)
+    mov ebx, esi
     shl esi, 3
+    shl ebx, 1
+    add esi, ebx
     mov eax, esi
     call pBin_dw
 
