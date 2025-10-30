@@ -32,7 +32,7 @@ _start:                     ;tell linker entry point
     call putchar
     call putchar
 
-    ;call Punto c)
+    ; Punto c)
     mov esi, 0x20D685F3
     mov ebx, 0x40042021
     mov eax, esi
@@ -52,7 +52,7 @@ _start:                     ;tell linker entry point
     ; Punto d)
     push esi
     mov eax,esi
-    call pBin_dw
+    call pHex_dw
 
     mov al,10
     call putchar
@@ -60,6 +60,12 @@ _start:                     ;tell linker entry point
 
     ;punto e)
     mov ch, 0xA7
+    mov al, ch
+    call  pBin_b
+
+    mov al,10
+    call putchar
+
     mov bh, 0x48
     or ch, bh
     mov al, ch
@@ -71,6 +77,12 @@ _start:                     ;tell linker entry point
 
     ;Punto f)
     mov bp, 0x67DA
+    mov ax, bp
+    call pBin_w
+    
+    mov al,10
+    call putchar
+
     mov cx, 0xBBAD
     and bp, cx
     mov ax, bp
@@ -81,9 +93,15 @@ _start:                     ;tell linker entry point
     call putchar
 
     ;Punto g)
+    mov ax, bp
+    call pHex_w
+
+    mov al,10
+    call putchar
+
     shr bp, 3
     mov ax, bp
-    call pBin_w
+    call pHex_w
 
     mov al,10
     call putchar
@@ -92,9 +110,15 @@ _start:                     ;tell linker entry point
 
     ;Punto h)
     mov ebx, 0x22446688
+    mov eax, ebx
+    call pHex_dw
+    
+    mov al,10
+    call putchar
+    
     shr ebx, 5
     mov eax, ebx
-    call pBin_dw
+    call pHex_dw
 
     mov al,10
     call putchar
@@ -103,9 +127,15 @@ _start:                     ;tell linker entry point
     ; Punto i)
 
     mov cx, 0xFA40;
+    mov ax, cx
+    call pHex_w
+
+    mov al, 10
+    call putchar
+
     shl cx, 3
     mov ax, cx
-    call pBin_w
+    call pHex_w
 
     mov al,10
     call putchar
@@ -114,19 +144,25 @@ _start:                     ;tell linker entry point
     ;Punto j)
     pop esi
     mov eax, esi
-    call pBin_dw
+    call pHex_dw
 
     mov al,10
     call putchar
     call putchar
 
     ; Punto k)
+    mov eax, esi
+    call pHex_dw
+
+    mov al,10
+    call putchar
+
     mov ebx, esi
     shl esi, 3
     shl ebx, 1
     add esi, ebx
     mov eax, esi
-    call pBin_dw
+    call pHex_dw
 
     mov al,10
     call putchar
