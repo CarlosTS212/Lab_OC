@@ -105,7 +105,7 @@ _start:                     ;tell linker entry point
     loop ciclo_c
         
     fin_c:
-    
+
     mov al,10
     call putchar
     call putchar
@@ -129,6 +129,7 @@ _start:                     ;tell linker entry point
 
     mov ecx, 10
     mov esi, arreglo
+
 
     mostrar:
         mov al, [esi]
