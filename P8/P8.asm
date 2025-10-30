@@ -8,7 +8,7 @@ _start:                     ;tell linker entry point
 
    
     ;------------------------ Punto a)----------------------- 
-    mov edx, ingresar
+    mov edx, ingresar_a
     call puts
     call getche
 
@@ -38,7 +38,7 @@ _start:                     ;tell linker entry point
     call putchar
 
     ;------------------Punto b)-------------------- 
-    mov edx, ingresar
+    mov edx, ingresar_b
     call puts
     call getche
 
@@ -79,7 +79,7 @@ _start:                     ;tell linker entry point
     call putchar
 
     ;--------------------Punto c)---------------------
-    mov edx, ingresar
+    mov edx, ingresar_c
     call puts
     call getche
 
@@ -105,15 +105,40 @@ _start:                     ;tell linker entry point
     loop ciclo_c
         
     fin_c:
-
+    
+    mov al,10
+    call putchar
+    call putchar
     ;-------------------Punto d)----------------------
     mov edx, ingresar_d
     call puts
 
-    mov cx,10
-    loop_10
+    mov cx, 10
+    mov edi, arreglo
+
+    leer_10:
         call getche
-        push al
+        mov [edi], al
+        inc edi
+    loop leer_10
+
+    mov al, 10
+    call putchar
+    mov edx, msg_g
+    call puts
+
+    mov ecx, 10
+    mov esi, arreglo
+
+    mostrar:
+        mov al, [esi]
+        call putchar
+        inc esi
+        mov al, 10
+        call putchar
+        loop mostrar
+
+
 
 
 
@@ -122,7 +147,9 @@ _start:                     ;tell linker entry point
 	int 0x80        ;call kernel
 
 section	.data
-ingresar db  'Ingrese un dato: ',0 
+ingresar_a db  'Ingrese un dato de ‘a’ a ‘z’: ',0 
+ingresar_b db  'Ingrese un dato entre rango [0..9] y [A..Z] para verificar si es numero o letra mayuscula: ',0 
+ingresar_c db  'Ingrese un numero entre 0 a 9 para imprimir una piramide de *: ',0 
 ingresar_d db  'Ingrese 10 datos: ',0 
 menor db  'Es menor que m',10,0 
 mayor db  'Es mayor que m',10,0 
@@ -130,4 +157,6 @@ numero db  'Es un numero',10,0
 letra db  'Es una letra Mayuscula',10,0 
 ninguno db  'Es ninguno',10,0 
 asterisco db  '*',0 
+msg_g db  'Datos Capturados',10,0 
+arreglo db  '',10,0 
 
