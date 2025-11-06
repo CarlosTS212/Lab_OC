@@ -4,8 +4,8 @@ section	.data
 ingresar_a db  'Ingrese el primer arreglo',0 
 ingresar_b db  'Ingrese el segundo arreglo',0 
 ingresar_c db  'Ingrese un numero entre 0 a 9 para imprimir una piramide de *: ',0 
-arreglo_1 db 0,0,0,0,0,0,0,0,0,0
-arreglo_2 db 0,0,0,0,0,0,0,0,0,0
+arreglo_1 db 2,1,5,1,5,0,0,0,0,0
+arreglo_2 db 8,4,3,2,0,0,0,0,0,0
 
 N equ 10
 
@@ -23,13 +23,13 @@ _start:                     ;tell linker entry point
     ;------------------------ Punto b)----------------------- 
     mov ebx, arreglo_1
     mov ecx, N
-    call capturar
+    ;call capturar
 
     mov edx, arreglo_2
     mov ecx, N
-    call capturar
+    ;call capturar
 
-    call salto
+    ;call salto
 
     mov ebx, arreglo_1
     mov edx, arreglo_2
@@ -82,9 +82,9 @@ _start:                     ;tell linker entry point
 
     sumar:
         sum:
-        mov eax, 000000000000000
-        add eax, ebx
-        mov [ebx], [ebx + edx]
+        mov eax,[ebx]
+        add eax,[edx]
+        mov [ebx], eax
         inc ebx
         inc edx
         loop sum
