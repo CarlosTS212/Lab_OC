@@ -1,9 +1,6 @@
 %include "../LIB/pc_iox.inc"
 
 section	.data
-ingresar_a db  'Ingrese el primer arreglo',0 
-ingresar_b db  'Ingrese el segundo arreglo',0 
-ingresar_c db  'Ingrese un numero entre 0 a 9 para imprimir una piramide de *: ',0 
 arreglo_1 db 2,1,5,1,5,0,0,0,0,0
 arreglo_2 db 8,4,3,2,0,0,0,0,0,0
 
@@ -18,32 +15,38 @@ section	.text
 _start:                     ;tell linker entry point
 
    
-    ;------------------------ Punto a)----------------------- 
+    
 
-    ;------------------------ Punto b)----------------------- 
+    
     mov ebx, arreglo_1
     mov ecx, N
-    ;call capturar
+    call capturar
 
-    mov edx, arreglo_2
+    call salto
+
+    mov ebx, arreglo_2
     mov ecx, N
-    ;call capturar
+    call capturar
 
-    ;call salto
+    call salto
+    call salto
+
+    mov esi, arreglo_1
+    mov edi, arreglo_2
+    mov ecx, N
+    call escalar
+
+    call salto
 
     mov ebx, arreglo_1
     mov edx, arreglo_2
+    mov ecx, N
     call sumar
 
     mov ebx, arreglo_1
     mov ecx, N
     call imprimir
     
-
-
-
-
-
 
 	mov eax, 1	;system call number (sys_exit) -- fin del programa
 	int 0x80        ;call kernel
@@ -55,6 +58,7 @@ _start:                     ;tell linker entry point
         pop eax
     ret
 
+    ;------------------------ Punto a)----------------------- 
     capturar:
         cap:
             call getch
@@ -66,11 +70,11 @@ _start:                     ;tell linker entry point
             sub al, '0'
             mov [ebx],al
             inc ebx
-    loop capturar
+    loop cap
     ret
 
 
-
+    ;------------------------ Punto b)----------------------- 
     imprimir:
         leer:
             mov byte al, [ebx]
@@ -80,15 +84,31 @@ _start:                     ;tell linker entry point
         loop leer
     ret
 
+    ;------------------------ Punto c)-----------------------
     sumar:
         sum:
-        mov eax,[ebx]
-        add eax,[edx]
-        mov [ebx], eax
+        mov byte al, [ebx]
+        add al, [edx]
+        mov [ebx], al
         inc ebx
         inc edx
         loop sum
     ret
+
+    ;------------------------- Punto d)----------------------------
+    escalar:
+        
+
+        sums:
+            mov bl, [esi]
+            mov al, [edi]
+            mul bl
+            add dx, ax
+            inc edi
+            inc esi
+        loop sums
+        mov ax, dx
+        call pHex_w
 
    
 

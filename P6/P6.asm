@@ -38,7 +38,7 @@ _start:                     ;tell linker entry point
 
 
     ; Punto c)
-    movzx ax, bl              
+    mov ax, bl              
     shl ax, 3                 
     mov [N], ax               
 
