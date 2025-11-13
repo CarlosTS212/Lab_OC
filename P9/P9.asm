@@ -37,6 +37,7 @@ _start:                     ;tell linker entry point
     call escalar
 
     call salto
+    call salto
 
     mov ebx, arreglo_1
     mov edx, arreglo_2
@@ -109,6 +110,7 @@ _start:                     ;tell linker entry point
         loop sums
         mov ax, dx
         call pHex_w
+    ret
 
    
 
