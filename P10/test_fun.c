@@ -3,8 +3,13 @@ extern int suma(int a, int b);
 
 int main()
 {
-    int a=3;
+    int a=3,x;
     int b=3;
-    printf("%d",suma(a,b));
+    x = suma(a,b);
+    printf("%d",x);
+
+    char str[] = "Hola Mundo";
+    x = strlen(str);
+    printf("\n%d",x);
 }
 

@@ -5,10 +5,7 @@ global suma
 
 
 section	.text
-	global _start       
-	
-
-_start:                   
+	                
 	
 mov eax, 1	;system call number (sys_exit) -- fin del programa
 	int 0x80        ;call kernel
@@ -20,6 +17,17 @@ suma:
 
     mov eax,[ebp+8]
     add eax,[ebp+12]
+
+    pop ebp
+ret
+
+strlen:
+    push ebp
+    mov ebp,esp
+    
+    mov edi,ebp+8
+    
+
 
     pop ebp
 ret
