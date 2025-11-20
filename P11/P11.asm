@@ -104,27 +104,50 @@ pBin64b:
     mov ebp,esp
 
     mov eax,[ebp+8]
-    mov ecx, 64
+    mov ecx, 32
     shl eax,1
-    Loop_64:
+    Loop_64_a:
         push eax
         push ecx
 
-        jc Esuno_64
+        jc Esuno_64_a
         mov al,"0"
         call myputchar
-        jmp Fin_64
+        jmp Fin_64_a
 
-        Esuno_64:
+        Esuno_64_a:
             mov al,"1"
             call myputchar
 
-        Fin_64:
+        Fin_64_a:
         pop ecx
         pop eax
         shl eax,1
         
-    loop  Loop_64
+    loop  Loop_64_a
+    ;-----------------SEgunda parte-----------
+    mov edx,[ebp+12]
+    mov ecx, 32
+    shl edx,1
+    Loop_64_d:
+        push edx
+        push ecx
+
+        jc Esuno_64_d
+        mov al,"0"
+        call myputchar
+        jmp Fin_64_d
+
+        Esuno_64_d:
+            mov al,"1"
+            call myputchar
+
+        Fin_64_d:
+        pop ecx
+        pop edx
+        shl edx,1
+        
+    loop  Loop_64_d
 
     pop ebp
 ret

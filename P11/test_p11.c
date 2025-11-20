@@ -11,18 +11,17 @@ int main()
     uint8_t val8 = 136;
     uint16_t val16 = 513;
     uint32_t val32 = 2290649224;
-    uint64_t val64 = 283686952306183;
+    uint64_t val64 = 983826350597842;
 
+    
     pBin8b (val8);
     printf("\n");
    pBin16b (val16);
     printf("\n");
     pBin32b (val32);
     printf("\n");
-    /*pBin64b (val64);
+    pBin64b (val64);
     printf("\n");
 
-
-    */
     
 }
