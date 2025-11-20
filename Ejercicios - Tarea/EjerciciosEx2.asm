@@ -18,7 +18,15 @@ _start:
 
     call salto
 
-    mov edx,21
+    mov cx, 5
+    mov al, 10010010b
+    call TestBit
+
+
+
+    call salto
+
+    mov edx,24
     call EsPar
     add al,'0'
     call putchar
@@ -84,10 +92,28 @@ InvertirStr:
     pop esi
     pop eax
     pop edi
-r
+ret
 
 TestBit:
-    
+    push ax
+    push cx
+
+    mov ah, al
+    inc cl
+    shr ah, cl
+
+    jc Activado
+    mov al, "0"
+    call putchar
+    jmp Fin
+    Activado:
+        mov al, "1"
+        call putchar
+    Fin:
+
+    pop cx
+    pop ax
+
 ret
 
 EsPar:
@@ -103,7 +129,7 @@ EsPar:
     esImpar:
         mov al,0
         pop edx
-    ret
+ret
 
 
 
